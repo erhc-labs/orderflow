@@ -137,7 +137,7 @@ Las pruebas unitarias se ejecutan desde el módulo ``core``
 - Kafka
 ---
 ## Autor
-Edwin Huamanttupa
+Edwin HC
 Backend Developer - Java
 
 Este proyecto forma parte de mi portafolio técnico y está orientado a demostrar **criterios de diseño, buenas prácticas y código mantenible**.
