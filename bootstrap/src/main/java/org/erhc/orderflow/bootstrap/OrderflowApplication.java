@@ -5,7 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // ... existing code ...
-@SpringBootApplication
+@SpringBootApplication(
+        scanBasePackages = "org.erhc.orderflow"
+)
 public class OrderflowApplication {
 
     public static void main(String[] args) {
