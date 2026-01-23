@@ -42,6 +42,12 @@
                 <version>${revision}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.erhc.orderflow</groupId>
+                <artifactId>adapters-out-mongo</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
