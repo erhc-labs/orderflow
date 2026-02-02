@@ -25,18 +25,38 @@ public class Order {
         this.status = OrderStatus.CREATED;
     }
 
+     // ===== Constructor para RECONSTRUIR (PERSISTENCIA) =====
+    public Order(
+            OrderId id,
+            String customerId,
+            List<OrderItem> items,
+            OrderStatus status
+    ){
+        this.id = id;
+        this.customerId = customerId;
+        this.items = List.copyOf(items);
+        this.status = status;
+    }
+     // ===== Factory  de persistencia =====
+    public static Order fromPersistence(
+            OrderId id,
+            String customerId,
+            List<OrderItem> items,
+            OrderStatus status
+    ){
+        return new Order(id, customerId, items, status);
+    }
+
+
     public OrderId id(){
         return id;
     }
-
     public String customerId(){
         return customerId;
     }
-
     public List<OrderItem> items(){
         return items;
     }
-
     public OrderStatus status(){
         return status;
     }

@@ -6,6 +6,8 @@ import org.erhc.orderflow.core.domain.model.Order;
 import org.erhc.orderflow.core.ports.out.OrderRepositoryPort;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -36,5 +38,21 @@ public class MongoOrderRepositoryAdapter implements OrderRepositoryPort {
                 }).collect(Collectors.toList())
         );
         mongoOrderSpringRepository.save(doc);
+    }
+
+     // ===== GET BY ID =====
+    @Override
+    public Optional<Order> findById(String id) {
+        return mongoOrderSpringRepository.findById(id)
+                .map(OrderDocument::toDomain);
+    }
+
+     // ===== List =====
+    @Override
+    public List<Order> findAll() {
+        return mongoOrderSpringRepository.findAll()
+                .stream()
+                .map(OrderDocument::toDomain)
+                .toList();
     }
 }

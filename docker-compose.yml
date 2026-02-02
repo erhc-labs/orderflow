@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
 
   mongo:
@@ -9,6 +7,18 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    restart: unless-stopped
+
+  orderflow-app:
+    build:
+      context: ./bootstrap
+    container_name: orderflow-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/orderflow
     restart: unless-stopped
 
 volumes:
