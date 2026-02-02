@@ -1,8 +1,6 @@
 package org.erhc.orderflow.bootstrap.config;
 
-import org.erhc.orderflow.core.application.service.AuditDiffCalculator;
-import org.erhc.orderflow.core.application.service.AuditService;
-import org.erhc.orderflow.core.application.service.CreateOrderService;
+import org.erhc.orderflow.core.application.service.*;
 import org.erhc.orderflow.core.ports.out.AuditPort;
 import org.erhc.orderflow.core.ports.out.OrderRepositoryPort;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +28,16 @@ public class CoreConfig {
             AuditService auditService
     ) {
         return new CreateOrderService(repository, auditService);
+    }
+
+    @Bean
+    public GetOrderByIdService getOrderByIdService(OrderRepositoryPort repository){
+        return new GetOrderByIdService(repository);
+    }
+
+    @Bean
+    public ListOrdersService listOrdersService(OrderRepositoryPort repository){
+        return new ListOrdersService(repository);
     }
 
 }
